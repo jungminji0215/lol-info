@@ -1,7 +1,7 @@
 "use server";
 
 import { Champion } from "@/types/Champion";
-import { ChampionDetail } from "@/types/ChampionDetail";
+import { Item } from "@/types/Item";
 
 /** 버전 정보 */
 export const getVersion = async () => {
@@ -63,3 +63,21 @@ export const fetchChampionDetail = async (
 };
 
 /** 아이템 목록 */
+export const fetchItemList = async (version: string): Promise<Item> => {
+  try {
+    const response = await fetch(
+      `https://ddragon.leagueoflegends.com/cdn/${version}/data/ko_KR/item.json`
+    );
+
+    if (!response.ok) {
+      throw new Error();
+    }
+
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};

@@ -11,8 +11,8 @@ const Champions = async () => {
       <div>
         {Object.keys(data).map((key) => {
           return (
-            // eslint-disable-next-line react/jsx-key
             <ChampionCard
+              key={data[key].id}
               alt={"챔피언이미지"}
               src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${data[key].id}.png`}
               data={data[key]}

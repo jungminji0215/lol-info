@@ -1,6 +1,7 @@
 "use server";
 
 import { Champion } from "@/types/Champion";
+import { ChampionDetail } from "@/types/ChampionDetail";
 
 /** 버전 정보 */
 export const getVersion = async () => {
@@ -29,7 +30,7 @@ export const fetchChampionList = async (): Promise<Champion> => {
       throw new Error();
     }
 
-    const { data } = await response.json();
+    const data = await response.json();
 
     return data;
   } catch (error) {
@@ -39,5 +40,26 @@ export const fetchChampionList = async (): Promise<Champion> => {
 };
 
 /** 챔피언 상세 */
+export const fetchChampionDetail = async (
+  version: string,
+  id: string
+): Promise<Champion> => {
+  try {
+    const response = await fetch(
+      `https://ddragon.leagueoflegends.com/cdn/${version}/data/ko_KR/champion/${id}.json`
+    );
+
+    if (!response.ok) {
+      throw new Error();
+    }
+
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
 
 /** 아이템 목록 */

@@ -1,13 +1,13 @@
 import Image from "next/image";
 import React from "react";
 
-// type CardProps ={
-//   data:,
-//   alt : string,
-//   src : string
-// }
+type CardProps = {
+  data: { id: string; name: string; title: string };
+  alt: string;
+  src: string;
+};
 
-const Card = ({ data, alt, src }) => {
+const Card = ({ data, alt, src }: CardProps) => {
   return (
     <div key={data.id}>
       <Image src={src} width={48} height={48} alt={alt} />

@@ -1,7 +1,8 @@
+import { ChampionDetail } from "./ChampionDetail";
+
 export interface Champion {
-  [championName: string]: {
-    id: string;
-    name: string; 
-    title: string; 
+  version: string;
+  data: {
+    [championName: string]: ChampionDetail;
   };
 }

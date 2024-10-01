@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 export default function Home() {
+  console.log("Home 컴포넌트 입니다!");
   return (
     <div>
       <h2>리그 오브 레전드 정보 앱</h2>

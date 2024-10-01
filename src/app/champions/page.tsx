@@ -1,12 +1,10 @@
+import Card from "@/components/Card";
 import { fetchChampionList, getVersion } from "@/utils/serverApi";
-import Image from "next/image";
 import React from "react";
 
 const Champions = async () => {
   const version = await getVersion();
   const data = await fetchChampionList();
-
-  console.log("Champions rendering");
 
   return (
     <>
@@ -14,16 +12,12 @@ const Champions = async () => {
       <div>
         {Object.keys(data).map((key) => {
           return (
-            <div key={data[key].id}>
-              <Image
-                src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${data[key].id}.png`}
-                width={48}
-                height={48}
-                alt={"챔피언 이미지"}
-              />
-              <span>{data[key].name}</span>
-              <span> {data[key].title}</span>
-            </div>
+            // eslint-disable-next-line react/jsx-key
+            <Card
+              alt={"챔피언이미지"}
+              src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${data[key].id}.png`}
+              data={data[key]}
+            />
           );
         })}
       </div>

@@ -7,6 +7,7 @@ type ChampionDetailProps = {
 };
 
 const ChampionDetail = ({ params }: ChampionDetailProps) => {
+  console.log("params :>> ", params);
   return <div>챔피언 이름 {params.name}</div>;
 };
 

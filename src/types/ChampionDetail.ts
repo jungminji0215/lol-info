@@ -3,6 +3,7 @@ export interface ChampionDetail {
   name: string;
   title: string;
   lore: string;
+  key: string;
   info: {
     attack: number;
     defense: number;

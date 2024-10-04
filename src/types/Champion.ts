@@ -1,10 +1,10 @@
 import { ChampionDetail } from "./ChampionDetail";
 
-export interface ChampionData {
+export type ChampionData = {
   [championName: string]: ChampionDetail;
-}
+};
 
-export interface Champion {
+export type Champion = {
   version: string;
   data: ChampionData;
-}
+};

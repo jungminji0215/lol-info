@@ -1,18 +1,13 @@
-import ChampionCard from "@/components/ChampionCard";
 import { fetchChampionDetail } from "@/utils/serverApi";
 import Image from "next/image";
 import React from "react";
 
 type ChampionDetailProps = {
-  params: { id: "string" };
-  searchParams: { version: string };
+  params: { id: string };
 };
 
-const ChampionDetail = async ({
-  params,
-  searchParams,
-}: ChampionDetailProps) => {
-  const { data } = await fetchChampionDetail(searchParams.version, params.id);
+const ChampionDetail = async ({ params }: ChampionDetailProps) => {
+  const { data, version } = await fetchChampionDetail(params.id);
 
   const champion = data[params.id];
 
@@ -21,10 +16,10 @@ const ChampionDetail = async ({
       <h2>{champion.name}</h2>
       <h3>{champion.title}</h3>
       <Image
-        src={`https://ddragon.leagueoflegends.com/cdn/${searchParams.version}/img/champion/${params.id}.png`}
+        src={`${process.env.NEXT_PUBLIC_RIOT_API_URL}/${version}/img/champion/${params.id}.png`}
         width={100}
         height={100}
-        alt={"챔피언 상세 이미지"}
+        alt={`${champion.name} 챔피언 이미지`}
       />
       <p>{champion.lore}</p>
     </div>

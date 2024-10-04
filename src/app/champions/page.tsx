@@ -9,14 +9,13 @@ const Champions = async () => {
     <>
       <h2>쳄피언 목록</h2>
       <div>
-        {Object.keys(data).map((key) => {
+        {Object.entries(data).map((obj) => {
           return (
             <ChampionCard
-              key={data[key].id}
-              alt={"챔피언이미지"}
-              src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${data[key].id}.png`}
-              data={data[key]}
-              version={version}
+              key={obj[0]}
+              alt={"챔피언 이미지"}
+              src={`${process.env.NEXT_PUBLIC_RIOT_API_URL}/${version}/img/champion/${obj[1].id}.png`}
+              data={obj[1]}
             />
           );
         })}

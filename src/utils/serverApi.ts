@@ -40,11 +40,10 @@ export const fetchChampionList = async (): Promise<Champion> => {
 };
 
 /** 챔피언 상세 */
-export const fetchChampionDetail = async (
-  version: string,
-  id: string
-): Promise<Champion> => {
+export const fetchChampionDetail = async (id: string): Promise<Champion> => {
   try {
+    const version = await getVersion();
+
     const response = await fetch(
       `https://ddragon.leagueoflegends.com/cdn/${version}/data/ko_KR/champion/${id}.json`
     );

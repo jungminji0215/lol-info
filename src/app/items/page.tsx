@@ -10,13 +10,13 @@ const Items = async () => {
     <>
       <h2>아이템 목록</h2>
       <div>
-        {Object.keys(data).map((key) => {
+        {Object.entries(data).map((obj) => {
           return (
             <ItemCard
-              key={key}
+              key={obj[0]}
               alt={"아이템 이미지"}
-              src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/item/${key}.png`}
-              data={data[key]}
+              src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/item/${obj[0]}.png`}
+              data={obj[1]}
             />
           );
         })}

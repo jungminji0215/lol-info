@@ -2,16 +2,17 @@ import Link from "next/link";
 import React from "react";
 import Image from "next/image";
 
+type ChampionData = { id: string; name: string; title: string };
+
 type ChampionCardProps = {
-  data: { id: string; name: string; title: string };
+  data: ChampionData;
   alt: string;
   src: string;
-  version: string;
 };
 
-const ChampionCard = ({ data, alt, src, version }: ChampionCardProps) => {
+const ChampionCard = ({ data, alt, src }: ChampionCardProps) => {
   return (
-    <Link href={`/champions/${data.id}?version=${version}`}>
+    <Link href={`/champions/${data.id}`}>
       <div>
         <Image src={src} width={48} height={48} alt={alt} />
         <span>{data.name}</span>

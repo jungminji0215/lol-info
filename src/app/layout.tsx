@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Link from "next/link";
+import Providers from "@/components/providers/RQProvider";
 
 export const metadata: Metadata = {
   title: "LOL Info Home",
@@ -15,18 +16,20 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <header className="flex gap-10">
-          <Link href={"/"}>홈</Link>
-          <Link href={"/champions"}>챔피언 목록</Link>
-          <Link href={"/items"}>아이템 목록</Link>
-          <Link href={"/rotation"}>챔피언 로테이션</Link>
-        </header>
-        <main>{children}</main>
-        <footer>
-          <div>
-            <p>푸터입니다.</p>
-          </div>
-        </footer>
+        <Providers>
+          <header className="flex gap-10">
+            <Link href={"/"}>홈</Link>
+            <Link href={"/champions"}>챔피언 목록</Link>
+            <Link href={"/items"}>아이템 목록</Link>
+            <Link href={"/rotation"}>챔피언 로테이션</Link>
+          </header>
+          <main>{children}</main>
+          <footer>
+            <div>
+              <p>푸터입니다.</p>
+            </div>
+          </footer>
+        </Providers>
       </body>
     </html>
   );

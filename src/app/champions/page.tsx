@@ -1,29 +1,22 @@
-import { fetchChampionList, getVersion } from "@/utils/serverApi";
-import Image from "next/image";
+import ChampionCard from "@/components/ChampionCard";
+import { fetchChampionList } from "@/utils/serverApi";
 import React from "react";
 
 const Champions = async () => {
-  const version = await getVersion();
-  const data = await fetchChampionList();
-
-  console.log("Champions rendering");
+  const { version, data } = await fetchChampionList();
 
   return (
     <>
       <h2>쳄피언 목록</h2>
       <div>
-        {Object.keys(data).map((key) => {
+        {Object.entries(data).map((obj) => {
           return (
-            <div key={data[key].id}>
-              <Image
-                src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${data[key].id}.png`}
-                width={48}
-                height={48}
-                alt={"챔피언 이미지"}
-              />
-              <span>{data[key].name}</span>
-              <span> {data[key].title}</span>
-            </div>
+            <ChampionCard
+              key={obj[0]}
+              alt={"챔피언 이미지"}
+              src={`${process.env.NEXT_PUBLIC_RIOT_API_URL}/${version}/img/champion/${obj[1].id}.png`}
+              data={obj[1]}
+            />
           );
         })}
       </div>

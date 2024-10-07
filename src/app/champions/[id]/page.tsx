@@ -7,16 +7,10 @@ type ChampionDetailProps = {
   params: { id: string };
 };
 
-export async function generateMetadata({
-  params,
-}: ChampionDetailProps): Promise<Metadata> {
-  const { data } = await fetchChampionDetail(params.id);
-
-  const champion = data[params.id];
-
+export function generateMetadata({ params }: ChampionDetailProps): Metadata {
   return {
-    title: champion.name,
-    description: champion.name,
+    title: params.id,
+    description: params.id,
   };
 }
 

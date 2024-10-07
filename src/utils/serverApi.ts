@@ -14,72 +14,58 @@ export const getVersion = async () => {
 
 /** 챔피언 목록 */
 export const fetchChampionList = async (): Promise<Champion> => {
-  try {
-    const version = await getVersion();
+  const version = await getVersion();
 
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_RIOT_API_URL}/${version}/data/ko_KR/champion.json`,
-      {
-        next: {
-          revalidate: 86400,
-        },
-      }
-    );
-
-    if (!response.ok) {
-      throw new Error();
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_RIOT_API_URL}/${version}/data/ko_KR/champion.json`,
+    {
+      next: {
+        revalidate: 86400,
+      },
     }
+  );
 
-    const data = await response.json();
-
-    // TODO 삭제
-    // throw new Error("오류 !!");
-
-    return data;
-  } catch (error) {
-    console.error(error);
-    throw error;
+  if (!response.ok) {
+    throw new Error(
+      `오류가 발생했습니다. status : ${response.status}, message : ${response.statusText}`
+    );
   }
+
+  const data = await response.json();
+  return data;
 };
 
 /** 챔피언 상세 */
 export const fetchChampionDetail = async (id: string): Promise<Champion> => {
-  try {
-    const version = await getVersion();
+  const version = await getVersion();
 
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_RIOT_API_URL}/${version}/data/ko_KR/champion/${id}.json`
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_RIOT_API_URL}/${version}/data/ko_KR/champion/${id}.json`
+  );
+
+  if (!response.ok) {
+    throw new Error(
+      `오류가 발생했습니다. status : ${response.status}, message : ${response.statusText}`
     );
-
-    if (!response.ok) {
-      throw new Error();
-    }
-
-    const data = await response.json();
-
-    return data;
-  } catch (error) {
-    console.error(error);
-    throw error;
   }
+
+  const data = await response.json();
+
+  return data;
 };
 
 /** 아이템 목록 */
 export const fetchItemList = async (version: string): Promise<Item> => {
-  try {
-    const response = await fetch(
-      `https://ddragon.leagueoflegends.com/cdn/${version}/data/ko_KR/item.json`
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_RIOT_API_URL}/${version}/data/ko_KR/item.json`
+  );
+
+  if (!response.ok) {
+    throw new Error(
+      `오류가 발생했습니다. status : ${response.status}, message : ${response.statusText}`
     );
-
-    if (!response.ok) {
-      throw new Error();
-    }
-
-    const data = await response.json();
-
-    return data;
-  } catch (error) {
-    console.error(error);
-    throw error;
   }
+  const data = await response.json();
+
+  return data;
 };

@@ -1,6 +1,12 @@
 import ChampionCard from "@/components/ChampionCard";
 import { fetchChampionList } from "@/utils/serverApi";
+import { Metadata } from "next";
 import React from "react";
+
+export const metadata: Metadata = {
+  title: "롤 챔피언 목록",
+  description: "롤 챔피언 목록 페이지입니다.",
+};
 
 /** 챔피언 목록 */
 const Champions = async () => {

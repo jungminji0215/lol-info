@@ -48,9 +48,10 @@ const Rotation = () => {
     }
   }, [championListData, fetchRotation]);
 
-  if (isChampionListLoading || isRotationLoading) return <div>로딩중...</div>;
+  if (isChampionListLoading || isRotationLoading)
+    return <div className="text-white text-center">로딩중...</div>;
   if (championListError || rotationError)
-    return <div>에러가 발생했습니다.</div>;
+    return <div className="text-white  text-center">에러가 발생했습니다.</div>;
 
   const champions = championListData?.data;
   const version = championListData?.version;

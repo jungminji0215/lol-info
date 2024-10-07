@@ -11,10 +11,10 @@ type ItemCardProps = {
 
 const ItemCard = ({ data, alt, src }: ItemCardProps) => {
   return (
-    <div>
+    <div className="card-style">
       <Image src={src} width={48} height={48} alt={alt} />
-      <span>{data.name}</span>
-      <span> {data.plaintext}</span>
+      <span className="font-bold text-red-700">{data.name}</span>
+      <span className="text-zinc-400"> {data.plaintext}</span>
     </div>
   );
 };

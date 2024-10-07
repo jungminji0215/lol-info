@@ -15,6 +15,7 @@ const Items = async () => {
   return (
     <div className="px-8">
       <h2 className="list-title">아이템 목록</h2>
+
       <div className="card-container">
         {Object.entries(data).map((obj) => {
           return (

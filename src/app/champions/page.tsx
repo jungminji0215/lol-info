@@ -15,6 +15,9 @@ const Champions = async () => {
   return (
     <div className="px-8">
       <h2 className="list-title">쳄피언 목록</h2>
+      <p className="text-zinc-400 text-center mb-8">
+        챔피언을 클릭하여 상세 정보를 확인하세요.
+      </p>
       <div className="card-container">
         {Object.entries(data).map((obj) => {
           return (

@@ -29,7 +29,7 @@ const ChampionDetail = async ({ params }: ChampionDetailProps) => {
       </div>
 
       <Image
-        src={`${process.env.NEXT_PUBLIC_RIOT_API_URL}/${version}/img/champion/${params.id}.png`}
+        src={`${process.env.NEXT_PUBLIC_RIOT_API_URL}/cdn/${version}/img/champion/${params.id}.png`}
         width={300}
         height={300}
         alt={`${champion.name} 챔피언 이미지`}

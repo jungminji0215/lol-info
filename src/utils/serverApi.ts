@@ -17,7 +17,7 @@ export const fetchChampionList = async (): Promise<Champion> => {
   const version = await getVersion();
 
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_RIOT_API_URL}/${version}/data/ko_KR/champion.json`,
+    `${process.env.NEXT_PUBLIC_RIOT_API_URL}/cdn/${version}/data/ko_KR/champion.json`,
     {
       next: {
         revalidate: 86400,
@@ -40,7 +40,7 @@ export const fetchChampionDetail = async (id: string): Promise<Champion> => {
   const version = await getVersion();
 
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_RIOT_API_URL}/${version}/data/ko_KR/champion/${id}.json`
+    `${process.env.NEXT_PUBLIC_RIOT_API_URL}/cdn/${version}/data/ko_KR/champion/${id}.json`
   );
 
   if (!response.ok) {
@@ -57,7 +57,7 @@ export const fetchChampionDetail = async (id: string): Promise<Champion> => {
 /** 아이템 목록 */
 export const fetchItemList = async (version: string): Promise<Item> => {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_RIOT_API_URL}/${version}/data/ko_KR/item.json`
+    `${process.env.NEXT_PUBLIC_RIOT_API_URL}/cdn/${version}/data/ko_KR/item.json`
   );
 
   if (!response.ok) {

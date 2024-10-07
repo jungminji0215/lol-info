@@ -68,7 +68,7 @@ const Rotation = () => {
                 <ChampionCard
                   key={champions[champion].id}
                   alt={"챔피언 이미지"}
-                  src={`${process.env.NEXT_PUBLIC_RIOT_API_URL}/${version}/img/champion/${champions[champion].id}.png`}
+                  src={`${process.env.NEXT_PUBLIC_RIOT_API_URL}/cdn/${version}/img/champion/${champions[champion].id}.png`}
                   data={champions[champion]}
                 />
               );

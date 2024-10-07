@@ -21,7 +21,7 @@ const Champions = async () => {
             <ChampionCard
               key={obj[0]}
               alt={"챔피언 이미지"}
-              src={`${process.env.NEXT_PUBLIC_RIOT_API_URL}/${version}/img/champion/${obj[1].id}.png`}
+              src={`${process.env.NEXT_PUBLIC_RIOT_API_URL}/cdn/${version}/img/champion/${obj[1].id}.png`}
               data={obj[1]}
             />
           );

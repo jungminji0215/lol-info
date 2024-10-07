@@ -2,13 +2,14 @@ import ChampionCard from "@/components/ChampionCard";
 import { fetchChampionList } from "@/utils/serverApi";
 import React from "react";
 
+/** 챔피언 목록 */
 const Champions = async () => {
   const { version, data } = await fetchChampionList();
 
   return (
-    <>
-      <h2>쳄피언 목록</h2>
-      <div>
+    <div className="px-8">
+      <h2 className="list-title">쳄피언 목록</h2>
+      <div className="card-container">
         {Object.entries(data).map((obj) => {
           return (
             <ChampionCard
@@ -20,7 +21,7 @@ const Champions = async () => {
           );
         })}
       </div>
-    </>
+    </div>
   );
 };
 

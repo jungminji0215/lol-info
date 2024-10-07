@@ -18,7 +18,7 @@ export const fetchChampionList = async (): Promise<Champion> => {
     const version = await getVersion();
 
     const response = await fetch(
-      `https://ddragon.leagueoflegends.com/cdn/${version}/data/ko_KR/champion.json`,
+      `${process.env.NEXT_PUBLIC_RIOT_API_URL}/${version}/data/ko_KR/champion.json`,
       {
         next: {
           revalidate: 86400,
@@ -31,6 +31,9 @@ export const fetchChampionList = async (): Promise<Champion> => {
     }
 
     const data = await response.json();
+
+    // TODO 삭제
+    // throw new Error("오류 !!");
 
     return data;
   } catch (error) {
@@ -45,7 +48,7 @@ export const fetchChampionDetail = async (id: string): Promise<Champion> => {
     const version = await getVersion();
 
     const response = await fetch(
-      `https://ddragon.leagueoflegends.com/cdn/${version}/data/ko_KR/champion/${id}.json`
+      `${process.env.NEXT_PUBLIC_RIOT_API_URL}/${version}/data/ko_KR/champion/${id}.json`
     );
 
     if (!response.ok) {

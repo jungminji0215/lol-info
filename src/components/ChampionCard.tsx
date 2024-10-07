@@ -13,10 +13,10 @@ type ChampionCardProps = {
 const ChampionCard = ({ data, alt, src }: ChampionCardProps) => {
   return (
     <Link href={`/champions/${data.id}`}>
-      <div>
-        <Image src={src} width={48} height={48} alt={alt} />
-        <span>{data.name}</span>
-        <span> {data.title}</span>
+      <div className="card-style">
+        <Image src={src} width={100} height={100} alt={alt} />
+        <span className="font-bold text-red-700">{data.name}</span>
+        <span className="text-zinc-400"> {data.title}</span>
       </div>
     </Link>
   );

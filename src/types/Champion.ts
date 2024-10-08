@@ -1,10 +1,43 @@
-import { ChampionDetail } from "./ChampionDetail";
+export interface Champion {
+  id: string;
+  key: string;
+  name: string;
+  title: string;
+  version: string; // Champion에만 version 필드
+  image: {
+    full: string;
+    sprite: string;
+    group: string;
+    x: number;
+    y: number;
+    w: number;
+    h: number;
+  };
+}
 
-export type ChampionData = {
-  [championName: string]: ChampionDetail;
-};
+export interface ChampionDetail extends Omit<Champion, "version"> {
+  lore: string;
+  blurb: string;
+  stats: {
+    [key: string]: number;
+  };
+  spells: Spell[];
+  passive: Passive;
+}
 
-export type Champion = {
-  version: string;
-  data: ChampionData;
-};
+export interface Spell {
+  id: string;
+  name: string;
+  description: string;
+  image: {
+    full: string;
+  };
+}
+
+export interface Passive {
+  name: string;
+  description: string;
+  image: {
+    full: string;
+  };
+}

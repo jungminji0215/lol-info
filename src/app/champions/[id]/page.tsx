@@ -1,4 +1,4 @@
-import { fetchChampionDetail } from "@/utils/serverApi";
+import { fetchChampionDetail, fetchVersion } from "@/utils/serverApi";
 import { Metadata } from "next";
 import Image from "next/image";
 import React from "react";
@@ -15,9 +15,8 @@ export function generateMetadata({ params }: ChampionDetailProps): Metadata {
 }
 
 const ChampionDetail = async ({ params }: ChampionDetailProps) => {
-  const { data, version } = await fetchChampionDetail(params.id);
-
-  const champion = data[params.id];
+  const champion = await fetchChampionDetail(params.id);
+  const version = await fetchVersion();
 
   return (
     <div className="flex flex-col items-center text-center gap-5">

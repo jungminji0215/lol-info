@@ -1,16 +1,15 @@
+import React from "react";
+import { Metadata } from "next";
 import ChampionCard from "@/components/ChampionCard";
 import { fetchChampionList } from "@/utils/serverApi";
-import { Metadata } from "next";
-import React from "react";
 
 export const metadata: Metadata = {
   title: "롤 챔피언 목록",
   description: "롤 챔피언 목록 페이지입니다.",
 };
 
-/** 챔피언 목록 */
 const Champions = async () => {
-  const { version, data } = await fetchChampionList();
+  const championsResponse = await fetchChampionList();
 
   return (
     <div className="px-8">
@@ -19,13 +18,13 @@ const Champions = async () => {
         챔피언을 클릭하여 상세 정보를 확인하세요.
       </p>
       <div className="card-container">
-        {Object.entries(data).map((obj) => {
+        {Object.values(championsResponse).map((champion) => {
           return (
             <ChampionCard
-              key={obj[0]}
+              key={champion.id}
               alt={"챔피언 이미지"}
-              src={`${process.env.NEXT_PUBLIC_RIOT_API_URL}/cdn/${version}/img/champion/${obj[1].id}.png`}
-              data={obj[1]}
+              src={`${process.env.NEXT_PUBLIC_RIOT_API_URL}/cdn/${champion.version}/img/champion/${champion.id}.png`}
+              data={champion}
             />
           );
         })}

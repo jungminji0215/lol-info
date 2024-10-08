@@ -1,11 +1,17 @@
-interface ItemDetail {
-  name: string;
-  plaintext: string;
-}
+// interface ItemDetail {
+//   name: string;
+//   plaintext: string;
+// }
+
+// export interface Item {
+//   version: string;
+//   data: {
+//     [itemId: string]: ItemDetail;
+//   };
+// }
 
 export interface Item {
-  version: string;
-  data: {
-    [itemId: string]: ItemDetail;
-  };
+  name: string;
+  description: string;
+  plaintext: string;
 }
